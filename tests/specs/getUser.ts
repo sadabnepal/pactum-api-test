@@ -1,51 +1,30 @@
 import { spec, expect } from 'pactum';
 import { startServer, stopServer } from '../../mocks/helper/server';
 import { ENV } from '../env/manager';
+import { fetchMockResponseDataByFileName } from '../../mocks/helper/fileHandler';
 
 describe('user test suite', () => {
 
-    before(async () => {
-        await startServer(3001, 'localhost');
-    });
+    if (process.env.ENV === 'local') {
+        before(async () => {
+            await startServer(3001, 'localhost');
+        });
 
-    after(async () => {
-        await stopServer();
-    });
+        after(async () => {
+            await stopServer();
+        });
+    }
 
     it('should get user 1', async () => {
         await spec().get(`${ENV.BASE_URL}/api/users/1`)
             .expectStatus(200)
-            .expectBody({
-                'data': {
-                    'id': 1,
-                    'email': 'george.bluth@reqres.in',
-                    'first_name': 'George',
-                    'last_name': 'Bluth',
-                    'avatar': 'https://reqres.in/img/faces/1-image.jpg'
-                },
-                'support': {
-                    'url': 'https://reqres.in/#support-heading',
-                    'text': 'To keep ReqRes free, contributions towards server costs are appreciated!'
-                }
-            });
+            .expectBody(fetchMockResponseDataByFileName('1.json'));
     });
 
     it('should get user 2', async () => {
         await spec().get(`${ENV.BASE_URL}/api/users/2`)
             .expectStatus(200)
-            .expectBody({
-                'data': {
-                    'id': 2,
-                    'email': 'janet.weaver@reqres.in',
-                    'first_name': 'Janet',
-                    'last_name': 'Weaver',
-                    'avatar': 'https://reqres.in/img/faces/2-image.jpg'
-                },
-                'support': {
-                    'url': 'https://reqres.in/#support-heading',
-                    'text': 'To keep ReqRes free, contributions towards server costs are appreciated!'
-                }
-            });
+            .expectBody(fetchMockResponseDataByFileName('2.json'));
     });
 
     it('should get user 3', async () => {

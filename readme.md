@@ -14,7 +14,7 @@ cd pactum-api-test
 ```
 export ENV=local  
       OR
-export ENV=stage
+export ENV=dev
 ```
 
 ### run test

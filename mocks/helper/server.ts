@@ -1,72 +1,65 @@
 import { mock } from 'pactum';
-import { readFileSync } from 'fs';
-import { join } from 'path';
-
-const responseFolderPath = join(process.cwd(), 'mocks', 'response');
-
-const getResponseByFileName = (fileName: string) => {
-    return JSON.parse(readFileSync(join(responseFolderPath, fileName), { encoding: 'utf-8' }));
-};
+import { fetchMockResponseDataByFileName } from './fileHandler';
 
 export const startServer = async (port: number, host: string) => {
     await mock.addInteraction({
         request: { method: 'GET', path: '/api/users/1' },
-        response: { status: 200, body: getResponseByFileName('1.json') }
+        response: { status: 200, body: fetchMockResponseDataByFileName('1.json') }
     });
 
     await mock.addInteraction({
         request: { method: 'GET', path: '/api/users/2' },
-        response: { status: 200, body: getResponseByFileName('2.json') }
+        response: { status: 200, body: fetchMockResponseDataByFileName('2.json') }
     });
 
     await mock.addInteraction({
         request: { method: 'GET', path: '/api/users/3' },
-        response: { status: 200, body: getResponseByFileName('3.json') }
+        response: { status: 200, body: fetchMockResponseDataByFileName('3.json') }
     });
 
     await mock.addInteraction({
         request: { method: 'GET', path: '/api/users/4' },
-        response: { status: 200, body: getResponseByFileName('4.json') }
+        response: { status: 200, body: fetchMockResponseDataByFileName('4.json') }
     });
 
     await mock.addInteraction({
         request: { method: 'GET', path: '/api/users/5' },
-        response: { status: 200, body: getResponseByFileName('5.json') }
+        response: { status: 200, body: fetchMockResponseDataByFileName('5.json') }
     });
 
     await mock.addInteraction({
         request: { method: 'GET', path: '/api/users/6' },
-        response: { status: 200, body: getResponseByFileName('6.json') }
+        response: { status: 200, body: fetchMockResponseDataByFileName('6.json') }
     });
 
     await mock.addInteraction({
         request: { method: 'GET', path: '/api/users/7' },
-        response: { status: 200, body: getResponseByFileName('7.json') }
+        response: { status: 200, body: fetchMockResponseDataByFileName('7.json') }
     });
 
     await mock.addInteraction({
         request: { method: 'GET', path: '/api/users/8' },
-        response: { status: 200, body: getResponseByFileName('8.json') }
+        response: { status: 200, body: fetchMockResponseDataByFileName('8.json') }
     });
 
     await mock.addInteraction({
         request: { method: 'GET', path: '/api/users/9' },
-        response: { status: 200, body: getResponseByFileName('9.json') }
+        response: { status: 200, body: fetchMockResponseDataByFileName('9.json') }
     });
 
     await mock.addInteraction({
         request: { method: 'GET', path: '/api/users/10' },
-        response: { status: 200, body: getResponseByFileName('10.json') }
+        response: { status: 200, body: fetchMockResponseDataByFileName('10.json') }
     });
 
     await mock.addInteraction({
         request: { method: 'GET', path: '/api/users/11' },
-        response: { status: 200, body: getResponseByFileName('11.json') }
+        response: { status: 200, body: fetchMockResponseDataByFileName('11.json') }
     });
 
     await mock.addInteraction({
         request: { method: 'GET', path: '/api/users/12' },
-        response: { status: 200, body: getResponseByFileName('12.json') }
+        response: { status: 200, body: fetchMockResponseDataByFileName('12.json') }
     });
 
     await mock.start(port, host);
