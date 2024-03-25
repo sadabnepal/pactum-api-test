@@ -34,3 +34,9 @@ mocha: https://ricostacruz.com/mocha/ <br>
 mocha config: https://github.com/mochajs/mocha/tree/master/example/config <br>
 eslint: https://eslint.org/docs/latest/use/getting-started <br>
 vscode settings: https://code.visualstudio.com/docs/getstarted/settings
+Blog: https://medium.com/@joaovitorcoelho10/pactumjs-a-next-gen-rest-api-testing-tool-ae88a9e51916
+
+### TODO:
+      - assertion fix
+      - better reusable http calls
+      - enhance mocks
