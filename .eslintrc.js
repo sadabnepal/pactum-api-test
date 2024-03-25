@@ -49,5 +49,6 @@ module.exports = {
     parserOptions: {
         project: 'tsconfig.json',
         sourceType: 'module',
-    }
+    },
+    'ignorePatterns': ['report', 'node_modules']
 };
