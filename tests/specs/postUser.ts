@@ -15,7 +15,7 @@ describe('create user test suite', () => {
         });
     }
 
-    it('should create user', async () => {
+    it('should create user with json body', async () => {
         const payload = {
             name: 'sadab',
             job: 'tester'

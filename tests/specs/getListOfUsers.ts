@@ -16,7 +16,7 @@ describe('fetch list of users test suite', () => {
     }
 
 
-    it('should get page 2 with query params', async () => {
+    it('should get list of users of page with query params', async () => {
         await spec()
             .get(`${ENV.BASE_URL}/api/users`)
             .withQueryParams({ page: 2 })
