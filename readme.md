@@ -25,7 +25,10 @@ npm run test
 ### stub details
 The project is using [pactum mock](https://pactumjs.github.io/guides/mock-server.html) which provides following endpoints 
 
-`GET: /api/users/userID` fetches the user information by `userID` <br>
+`GET: /api/users/{id}` fetches the user information by `user id` <br>
+`POST: /api/users` fetches the user with query parameter `{ page: 2 }` <br>
+`POST: /api/users` creates user with body `{ name: 'Ken', job: 'Test Engineer' }`
+`GET: /bearer` authenticate user with token that includes `Bearer` <br>
 
 ### learning references:
 pactum: https://pactumjs.github.io/introduction/welcome.html <br>
@@ -33,10 +36,8 @@ supertest: http://visionmedia.github <br>
 mocha: https://ricostacruz.com/mocha/ <br>
 mocha config: https://github.com/mochajs/mocha/tree/master/example/config <br>
 eslint: https://eslint.org/docs/latest/use/getting-started <br>
-vscode settings: https://code.visualstudio.com/docs/getstarted/settings
+vscode settings: https://code.visualstudio.com/docs/getstarted/settings <br>
 Blog: https://medium.com/@joaovitorcoelho10/pactumjs-a-next-gen-rest-api-testing-tool-ae88a9e51916
 
 ### TODO:
-      - assertion fix
       - better reusable http calls
-      - enhance mocks

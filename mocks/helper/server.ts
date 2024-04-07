@@ -1,5 +1,5 @@
 import { mock } from 'pactum';
-import { like } from 'pactum-matchers';
+import { like, includes } from 'pactum-matchers';
 import { fetchMockedPageResponseDataByFileName, fetchMockedUserResponseDataByFileName } from './fileHandler';
 
 export const startServer = async (port: number, host: string) => {
@@ -93,6 +93,26 @@ export const startServer = async (port: number, host: string) => {
                 job: '$S{userJob}',
                 id: like(''),
                 createdAt: like('')
+            }
+        }
+    });
+
+    await mock.addInteraction({
+        request: {
+            method: 'GET',
+            path: '/bearer',
+            headers: {
+                Authorization: includes('Bearer')
+            }
+        },
+        stores: {
+            authToken: 'req.headers.authorization',
+        },
+        response: {
+            status: 200,
+            body: {
+                authenticated: true,
+                token: '$S{authToken}'
             }
         }
     });

@@ -63,11 +63,13 @@ describe('fetch user test suite', () => {
             .expectStatus(200);
     });
 
-    it.skip('should get user with bearer token', async () => {
+    it('should get user with bearer token', async () => {
+        const tokenValue = 'my token';
         await spec()
-            .get(`${ENV.BASE_URL}/api/users`)
-            .withBearerToken('token')
-            .expectStatus(200);
+            .get(`${ENV.HTTP_BIN_URL}/bearer`)
+            .withBearerToken(tokenValue)
+            .expectStatus(200)
+            .expectBodyContains(tokenValue);
     });
 
     it.skip('should get user with basic auth', async () => {
